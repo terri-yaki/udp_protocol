@@ -1,7 +1,5 @@
-s=10
-
-def encryp(MESSAGE):
-    encryptedMsg = MESSAGE
+def encryp(MESSAGE, s):
+    encryptedMsg = ""
    # transverse the plain text
     for i in range(len(MESSAGE)):
         char = MESSAGE[i]

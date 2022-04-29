@@ -8,20 +8,21 @@ import time
 dt = datetime.today().strftime('%d/%m')
 s= 4
 def encryp(MESSAGE, s):
+    encryptedMsg = ""
    # transverse the plain text
     for i in range(len(MESSAGE)):
         char = MESSAGE[i]
-        # Encrypt uppercase characters in plain text
         
+        print(char)
+        # Encrypt uppercase characters in plain text
         if (char.isupper()):
-            MESSAGE += chr((ord(char) + s-65) % 26 + 65)
+            encryptedMsg += chr((ord(char) + s-65) % 26 + 65)
         # Encrypt lowercase characters in plain text
         else:
-            MESSAGE += chr((ord(char) + s - 97) % 26 + 97)
-            encryptedMsg = MESSAGE
-    return encryptedMsg
-MESSAGE = "ggsasdhnjkbB"
-print(encryp(MESSAGE, s))
+            encryptedMsg += chr((ord(char) + s - 97) % 26 + 97)
+        return encryptedMsg
+
+encryp("asdfghjkl", s)
 #this will run the code repeatedly with fixed time
 starttime = time.time()
 while True:
@@ -39,7 +40,6 @@ while True:
             sock = socket.socket(socket.AF_INET, # Internet socket
                                 socket.SOCK_DGRAM) # UDP
             encryp(MESSAGE, s)
+            print(encryp(MESSAGE, s))
         else:
             pass
-        #Happy birthday to you! TerryLettcrfmvxlhecrxsrcsysrXivvc
-            print(encryp(MESSAGE, s))

@@ -1,6 +1,7 @@
 import socket
 from datetime import datetime
 from member import memberDict
+from encryption import encryp
 import time
 
 
@@ -18,12 +19,12 @@ while True:
             UDP_IP = memberDict[key][1]
             UDP_IP = bytes.decode(UDP_IP) #change binary to string
             MESSAGE = "Happy birthday to you! " + key
-            MESSAGE = str.encode(MESSAGE) #change string to binary
-            UDP_PORT = 1001
-            
+            #MESSAGE = str.encode(MESSAGE) #change string to binary
+            UDP_PORT = 1024
+            encryptedMsg = encryp(MESSAGE, s=4)
             sock = socket.socket(socket.AF_INET, # Internet socket
                                 socket.SOCK_DGRAM) # UDP
-            sock.sendto(MESSAGE, (UDP_IP, UDP_PORT)) #send message to specific ip and port
+            sock.sendto(encryptedMsg, (UDP_IP, UDP_PORT)) #send message to specific ip and port
 
             print("UDP target IP: %s" % UDP_IP)
             print("UDP target port: %s" % UDP_PORT)
